@@ -1,8 +1,7 @@
-#!env/bin/python
 from flask import Flask, jsonify
 from flask_cors import CORS
 
-app = Flask()
+app = Flask(__name__)
 CORS(app) # avoid Cross-Origin Resource Sharing (CORS) errors
 
 # Declare routes by following the examples below
