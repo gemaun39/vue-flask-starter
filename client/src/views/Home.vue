@@ -1,29 +1,40 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <img alt="Vue logo" src="../assets/book.jpg" class="center"/>
+    <br>
+    <h2>Which text would you like to use?</h2>
+    <br>
     <b-button v-on:click="get()">Click Me to Send API Request</b-button>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
 import axios from "axios"
 
 const URL = "http://127.0.0.1:5000"
 
 export default {
   name: "Home",
-  components: {
-    HelloWorld
-  },
+
   methods: {
     get: function () {
       axios
       .get(URL + "/api/v1.0/hello")
-      .then(response => (console.log(response)))
+      .then(response => {
+        console.log(response);
+      })
     }
   }
 };
 </script>
+
+<style scoped>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+</style>
