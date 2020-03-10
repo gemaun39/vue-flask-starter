@@ -1,7 +1,37 @@
 <template>
   <div class="about">
-    <h1>Hello</h1>
+    <h1>Shakespeare Text Generator</h1>
     <br>
-    <h2>Hello<h2>
+    <b-button v-on:click="get()">Get Generated Text</b-button>
+    <br>
+    <br>
+    <br>
+    <h5>{{ message }}</h5>
   </div>
 </template>
+<script>
+// @ is an alias to /src
+import axios from "axios"
+
+const URL = "http://127.0.0.1:5000"
+
+export default {
+  name: "Shakespeare",
+  data(){
+    return {
+      message: ""
+    }
+  },
+
+  methods: {
+    get: function () {
+      axios
+      .get(URL + "/api/v1.0/shakespeare")
+      .then(response => {
+        this.message = response.data.name
+        console.log(response);
+      })
+    }
+  }
+};
+</script>

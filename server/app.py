@@ -9,9 +9,9 @@ CORS(app) # avoid Cross-Origin Resource Sharing (CORS) errors
 def index():
     return "Hello, World!" # return this data to the client
 
-@app.route('/api/v1.0/hello', methods=['GET'])
+@app.route('/api/v1.0/shakespeare', methods=['GET'])
 def get_tasks():
-    return jsonify({'message': "Hello, client!"})
+    return jsonify({'name': "Hello, client!"})
 
 if __name__ == '__main__':
     app.run(debug=True)

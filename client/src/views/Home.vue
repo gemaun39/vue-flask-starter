@@ -10,17 +10,19 @@
     <h2>Which text would you like to generate from?</h2>
     <!-- <b-button v-on:click="get()">Click Me to Send API Request</b-button> -->
     <br>
-    <a href="./Shakespeare.vue" class="link_text">Shakespeare Text Generator</a>
+    <router-link to="/shakespeare" class="link_text">Shakespeare Text Generator</router-link>
     <br>
-    <a href="./sherlock.vue" class="link_text">Sherlock Holmes Text Generator</a>
+    <router-link to="/sherlock" class="link_text">Sherlock Holmes Text Generator</router-link>
     <br>
-    <a href="./wilde.vue" class="link_text">Oscar Wilde Text Generator</a>
+    <router-link to="/wilde" class="link_text">Oscar Wilde Text Generator</router-link>
     <br>
-    <a href="./austen.vue" class="link_text">Jane Austen Text Generator</a>
+    <router-link to="/austen" class="link_text">Jane Austen Text Generator</router-link>
     <br>
     <br>
-    <h2>Or, create a generator by inputing your own text</h2>
+    <br>
+    <h2>Or, <router-link to="/generator" class="alt_text">create a generator here</router-link> by inputing your own text</h2>
     <h5 class="alt_text">Note: Larger word count = more accurate</h5>
+    <br>
   </div>
 </template>
 
