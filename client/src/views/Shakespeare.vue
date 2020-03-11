@@ -28,7 +28,7 @@ export default {
       axios
       .get(URL + "/api/v1.0/shakespeare")
       .then(response => {
-        this.message = response.data.name
+        this.message = response.data.message
         console.log(response);
       })
     }
