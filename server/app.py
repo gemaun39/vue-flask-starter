@@ -47,5 +47,110 @@ def get_shakespeare():
     print(new_text)
     return jsonify({'message': new_text})
 
+@app.route('/api/v1.0/sherlock', methods=['GET'])
+def get_sherlock():
+    txt = ""
+    with open ("sherlock.txt", "r") as myfile:
+        txt=myfile.read()
+    print("Performing Regex")
+    my_list1 = re.findall(r"[\w]+|[.,!?;\"]", txt)
+    list_no_repeats = list(dict.fromkeys(my_list1)) #no repeats
+    tree = {}
+    print("Adding to tree")
+    for i in range(len(list_no_repeats)):
+        tree.update({list_no_repeats[i]: []})
+    length = len(my_list1)
+    print("Appending tree, " + str(length) + " words in corpus")
+    count = 0
+    period_count = 0
+    for i in range(length):
+        key = tree[my_list1[i]]
+        if (i+1) < length:
+            key.append(my_list1[i+1])
+    capital_list = re.findall('([A-Z][a-z]+|[A-Z])', txt)
+    starting_word = random.choice(capital_list)
+    new_text = starting_word + " "
+    for i in range(500):
+        word = tree[starting_word][random.randint(0, len(tree[starting_word]) - 1)]
+        new_text = new_text + word + " "
+        starting_word = word
+        if starting_word == ".":
+            period_count += 1
+        if period_count == 12:
+            break
+    new_text = re.sub(r'\s([?.!,;](?:\s|$))', r'\1', new_text)
+    print(new_text)
+    return jsonify({'message': new_text})
+
+@app.route('/api/v1.0/wilde', methods=['GET'])
+def get_wilde():
+    txt = ""
+    with open ("wilde.txt", "r") as myfile:
+        txt=myfile.read()
+    print("Performing Regex")
+    my_list1 = re.findall(r"[\w]+|[.,!?;\"]", txt)
+    list_no_repeats = list(dict.fromkeys(my_list1)) #no repeats
+    tree = {}
+    print("Adding to tree")
+    for i in range(len(list_no_repeats)):
+        tree.update({list_no_repeats[i]: []})
+    length = len(my_list1)
+    print("Appending tree, " + str(length) + " words in corpus")
+    count = 0
+    period_count = 0
+    for i in range(length):
+        key = tree[my_list1[i]]
+        if (i+1) < length:
+            key.append(my_list1[i+1])
+    capital_list = re.findall('([A-Z][a-z]+|[A-Z])', txt)
+    starting_word = random.choice(capital_list)
+    new_text = starting_word + " "
+    for i in range(500):
+        word = tree[starting_word][random.randint(0, len(tree[starting_word]) - 1)]
+        new_text = new_text + word + " "
+        starting_word = word
+        if starting_word == ".":
+            period_count += 1
+        if period_count == 12:
+            break
+    new_text = re.sub(r'\s([?.!,;](?:\s|$))', r'\1', new_text)
+    print(new_text)
+    return jsonify({'message': new_text})
+
+@app.route('/api/v1.0/austen', methods=['GET'])
+def get_austen():
+    txt = ""
+    with open ("austen.txt", "r") as myfile:
+        txt=myfile.read()
+    print("Performing Regex")
+    my_list1 = re.findall(r"[\w]+|[.,!?;\"]", txt)
+    list_no_repeats = list(dict.fromkeys(my_list1)) #no repeats
+    tree = {}
+    print("Adding to tree")
+    for i in range(len(list_no_repeats)):
+        tree.update({list_no_repeats[i]: []})
+    length = len(my_list1)
+    print("Appending tree, " + str(length) + " words in corpus")
+    count = 0
+    period_count = 0
+    for i in range(length):
+        key = tree[my_list1[i]]
+        if (i+1) < length:
+            key.append(my_list1[i+1])
+    capital_list = re.findall('([A-Z][a-z]+|[A-Z])', txt)
+    starting_word = random.choice(capital_list)
+    new_text = starting_word + " "
+    for i in range(500):
+        word = tree[starting_word][random.randint(0, len(tree[starting_word]) - 1)]
+        new_text = new_text + word + " "
+        starting_word = word
+        if starting_word == ".":
+            period_count += 1
+        if period_count == 12:
+            break
+    new_text = re.sub(r'\s([?.!,;](?:\s|$))', r'\1', new_text)
+    print(new_text)
+    return jsonify({'message': new_text})
+
 if __name__ == '__main__':
     app.run(debug=True)
